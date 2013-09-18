@@ -35,7 +35,7 @@ Ext.application({
     ],
 
     controllers: [
-        'Sidebar'
+        'SlideNavigation'
     ],
 
     stores: [

@@ -1,11 +1,11 @@
-Ext.define('sencha.controller.Sidebar', {
+Ext.define('sencha.controller.SlideNavigation', {
     extend: 'Ext.app.Controller',
 
     config: {
         refs: {
             // Main container
             mainContainerView: 'mainContainerView',
-            mainDisplayView: 'mainDisplayView',
+            mainDisplayView: 'mainContainerView panel[cls=main-display-view]',
 
             // Sidebar view
             sidebar: 'sidebar',
@@ -16,8 +16,8 @@ Ext.define('sencha.controller.Sidebar', {
         },
 
         control: {
-            mainDisplayView: {
-                initialize: 'onMainDisplayViewInit'
+            mainContainerView: {
+                initialize: 'onMainContainerViewInit'
             },
 
             sidebarBtn: {
@@ -41,7 +41,7 @@ Ext.define('sencha.controller.Sidebar', {
         this.defaultSideX = 80;
     },
 
-    onMainDisplayViewInit: function() {
+    onMainContainerViewInit: function() {
         // We will setup the defaul view here
         var sidebarMenu = this.getSidebarMenu(),
             record = sidebarMenu.getStore().getAt(0);
@@ -71,10 +71,11 @@ Ext.define('sencha.controller.Sidebar', {
         this.slideIn();
 
         if (this.selectedIndex !== index) {
+            this.selectedIndex = index;
             var mainDisplayView = this.getMainDisplayView();
 
             // Here you can switch view if you want because main display view has layout card (check if it has the old view otherwise add new view). 
-            // But for simpler, I just remove the old view and add new one
+            // But for simple, I just remove the old view and add new one
             mainDisplayView.removeAt(0);
             mainDisplayView.add({
                 xtype: 'navigationview',
