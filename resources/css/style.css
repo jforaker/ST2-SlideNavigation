@@ -1,0 +1,15 @@
+/* SIDEBAR */
+.sidebar {
+	z-index: 0 !important;
+	-webkit-transform: translate(-80px, 0);
+}
+
+.overlay-view {
+    background: none !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+.overlay-view .x-panel-inner {
+    background: transparent !important;
+}
