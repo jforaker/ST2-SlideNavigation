@@ -31,7 +31,7 @@ Ext.application({
     ],
 
     views: [
-        'Main', 'Sidebar', 'MainContainerView', 'NavigationBar'
+        'Main', 'Sidebar', 'MainContainerView', 'NavigationBar','Navigation-Feed', 'Feed','Attendance'
     ],
 
     controllers: [

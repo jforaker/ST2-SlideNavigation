@@ -46,20 +46,11 @@ Ext.define('sencha.controller.SlideNavigation', {
         var sidebarMenu = this.getSidebarMenu(),
             record = sidebarMenu.getStore().getAt(0);
         sidebarMenu.select(0);
+        var that = this;
 
         // You can just add panel view if there's no need to use navigation view
         this.getMainDisplayView().add({
-            xtype: 'navigationview',
-            navigationBar: null,
-
-            items: [{
-                xtype: 'panel',
-                layout: 'fit',
-                html: 'View for ' + record.data.name + ' - ' + record.data.group,
-                items: [{
-                    xtype: 'navigationBar'
-                }]
-            }]
+            xtype: 'FeederNav'
         });
     },
 
@@ -73,22 +64,15 @@ Ext.define('sencha.controller.SlideNavigation', {
         if (this.selectedIndex !== index) {
             this.selectedIndex = index;
             var mainDisplayView = this.getMainDisplayView();
+            var xtypeName = record.data.xtypeName;
+
+            console.log(mainDisplayView);
 
             // Here you can switch view if you want because main display view has layout card (check if it has the old view otherwise add new view). 
             // But for simple, I just remove the old view and add new one
             mainDisplayView.removeAt(0);
             mainDisplayView.add({
-                xtype: 'navigationview',
-                navigationBar: null,
-
-                items: [{
-                    xtype: 'panel',
-                    layout: 'fit',
-                    html: 'View for ' + record.data.name + ' - ' + record.data.group,
-                    items: [{
-                        xtype: 'navigationBar'
-                    }]
-                }]
+                xtype: xtypeName
             });
         }
     },
@@ -100,10 +84,10 @@ Ext.define('sencha.controller.SlideNavigation', {
             distance = e.x - e.previousX,
             mainMoveX = mainEl.getX() + distance,
             sideMoveX = sidebarEl.getX() + (distance * this.defaultSideX / this.defaultNavX);
-        
+
         // drag direction (true: right - false: left)
         this.dragDirection = (distance > 0);
-        
+
         // set move x
         var style = {
             '-webkit-transition': 'none',
@@ -115,7 +99,7 @@ Ext.define('sencha.controller.SlideNavigation', {
         if (mainMoveX < 0) style['-webkit-transform'] = 'translate3d(0, 0, 0)';
         else if (mainMoveX > this.defaultNavX) style['-webkit-transform'] = 'translate3d(' + this.defaultNavX + 'px, 0, 0)';
         mainEl.setStyle(style);
-        
+
         // sidebar
         style['-webkit-transform'] = 'translate3d(' + sideMoveX + 'px, 0, 0)';
         if (sideMoveX > 0) style['-webkit-transform'] = 'translate3d(0, 0, 0)';
