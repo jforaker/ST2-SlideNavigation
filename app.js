@@ -27,11 +27,16 @@ Ext.application({
         'Ext.navigation.View',
         'Ext.dataview.List',
         'Ext.data.Store',
-        'Ext.Anim',
+        'Ext.Anim'
     ],
 
     views: [
-        'Main', 'Sidebar', 'MainContainerView', 'NavigationBar','Navigation-Feed', 'Feed','Attendance'
+        'Main',
+        'Sidebar',
+        'MainContainerView',
+        'NavigationBar',
+        'View1-Navigation',
+        'View2-Navigation'
     ],
 
     controllers: [

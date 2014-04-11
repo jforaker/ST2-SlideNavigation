@@ -1,13 +1,9 @@
 /**
  * Created by jakeforaker on 4/10/14.
  */
-/**
- * Created by jakeforaker on 4/10/14.
- */
-Ext.define('sencha.view.Attendance', {
+Ext.define('sencha.view.View1-Navigation', {
     extend: 'Ext.navigation.View',
-    xtype: 'Attendance',
-    alias: 'widget.attendance',
+    xtype: "View1-Navigation",
     config: {
         showAnimation: 'fadeIn',
         layout: {
@@ -30,13 +26,13 @@ Ext.define('sencha.view.Attendance', {
         items: [{
             items: [{
                 xtype: 'button',
-                text: 'attendance',
+                text: 'Push a new view!',
                 handler: function () {
 
-                    var view = Ext.ComponentQuery.query('Attendance')[0];
+                    var view = Ext.ComponentQuery.query('View1-Navigation')[0];
                     view.push({
-                        title: 'AttendanceAttendanceAttendance',
-                        html: 'AttendanceAttendanceAttendanceAttendanceAttendance!'
+                        title: 'Second',
+                        html: 'Something else cool!'
                     });
                 }
             }]

@@ -42,15 +42,15 @@ Ext.define('sencha.controller.SlideNavigation', {
     },
 
     onMainContainerViewInit: function() {
-        // We will setup the defaul view here
-        var sidebarMenu = this.getSidebarMenu(),
-            record = sidebarMenu.getStore().getAt(0);
-        sidebarMenu.select(0);
-        var that = this;
+        var me = this;
 
-        // You can just add panel view if there's no need to use navigation view
-        this.getMainDisplayView().add({
-            xtype: 'FeederNav'
+        // We will setup the defaul view here
+        var sidebarMenu = me.getSidebarMenu();
+        sidebarMenu.select(0);
+
+        // You can add whatever you want here.  Lets make it our View1
+        me.getMainDisplayView().add({
+            xtype: 'View1-Navigation'
         });
     },
 
@@ -59,11 +59,16 @@ Ext.define('sencha.controller.SlideNavigation', {
     },
 
     onSidebarMenuItemTap: function(component, index, target, record, e, eOpts) {
-        this.slideIn();
+        var me = this;
 
-        if (this.selectedIndex !== index) {
-            this.selectedIndex = index;
-            var mainDisplayView = this.getMainDisplayView();
+        //give a slight delay before closing the side nav
+        Ext.defer(function(){
+            me.slideIn();
+        }, 200);
+
+        if (me.selectedIndex !== index) {
+            me.selectedIndex = index;
+            var mainDisplayView = me.getMainDisplayView();
             var xtypeName = record.data.xtypeName;
 
             console.log(mainDisplayView);
@@ -133,7 +138,7 @@ Ext.define('sencha.controller.SlideNavigation', {
                 dragend: {
                     fn: this.onDragEnd,
                     element: 'element'
-                },
+                }
             }
         });
 

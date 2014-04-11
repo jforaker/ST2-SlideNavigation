@@ -4,8 +4,8 @@ Ext.define('sencha.store.SidebarStore', {
 	config: {
 		fields: ['name' , 'xtypeName'],
 		data: [
-			{name: 'Feed', xtypeName: 'FeederNav'},
-			{name: 'Attendance', xtypeName: 'Attendance'}
+			{name: 'View 1', xtypeName: 'View1-Navigation'},
+			{name: 'View 2', xtypeName: 'View2-Navigation'}
 		]
 	}
 });

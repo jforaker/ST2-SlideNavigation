@@ -1,9 +1,13 @@
 /**
  * Created by jakeforaker on 4/10/14.
  */
-Ext.define('sencha.view.Navigation-Feed', {
+/**
+ * Created by jakeforaker on 4/10/14.
+ */
+Ext.define('sencha.view.View2-Navigation', {
     extend: 'Ext.navigation.View',
-    xtype: "FeederNav",
+    xtype: 'View2-Navigation',
+    alias: 'widget.view2',
     config: {
         showAnimation: 'fadeIn',
         layout: {
@@ -21,21 +25,18 @@ Ext.define('sencha.view.Navigation-Feed', {
                 cls: 'sidebar-btn'
             }]
         },
-
-        title: 'chalk',
-        html: 'asdf',
         fullscreen: true,
-        items: [{
 
+        items: [{
             items: [{
                 xtype: 'button',
-                text: 'Push a new view!',
+                text: 'Push another view YAA',
                 handler: function () {
 
-                    var view = Ext.ComponentQuery.query('FeederNav')[0];
+                    var view = Ext.ComponentQuery.query('View2-Navigation')[0];
                     view.push({
-                        title: 'Second',
-                        html: 'Second view!'
+                        title: 'View2',
+                        html: 'View2 View2 View2 View2!'
                     });
                 }
             }]
