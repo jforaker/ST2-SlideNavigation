@@ -7,7 +7,7 @@ Ext.define('sencha.view.NavigationBar', {
 		minHeight: 44,
 		items: [{
 			xtype: 'button',
-            name: 'slidebutton-left',
+            		name: 'slidebutton-left',
 			iconCls: 'home',
 			cls: 'sidebar-btn'
 		}]
